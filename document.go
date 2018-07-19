@@ -111,7 +111,7 @@ func NewDocument(text string, opts ...DocOpt) (*Document, error) {
 		doc.sentences = segmenter.segment(text)
 	}
 	if base.Tokenize || base.Tag || base.Extract {
-		tokenizer := newTreebankWordTokenizer()
+		tokenizer := newIterTokenizer()
 		if base.Segment {
 			for _, sent := range doc.sentences {
 				doc.tokens = append(
